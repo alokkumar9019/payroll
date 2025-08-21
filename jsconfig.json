@@ -1,7 +1,16 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "jsx": "react",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    
+
   }
 }
