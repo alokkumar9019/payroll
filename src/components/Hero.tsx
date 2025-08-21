@@ -2,6 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import animationData from "@/lotties/SaaS Meeting.json"; // put your animation JSON file here
+
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -89,12 +92,11 @@ export default function Hero() {
             variants={rise}
             className="flex items-center justify-center w-full h-full"
           >
-            <img
-              src="/hero.jpg" // Replace with your desired image path
-              alt="Payroll Variance and Risk Analysis"
-              className="w-full max-w-xl rounded-lg shadow-lg object-cover"
-              loading="lazy"
-            />
+            <Lottie
+        animationData={animationData}
+        loop={true}
+        className="w-full max-w-xl rounded-lg shadow-lg"
+      />
           </motion.div>
         </motion.div>
       </div>

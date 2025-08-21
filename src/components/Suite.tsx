@@ -41,6 +41,7 @@ export default function SuiteCapabilitiesWithLottie() {
         variants={containerVariants}
       >
         What You Can Do <span className="text-purple-600">With The Suite</span>
+        <span className="block mx-auto mt-2 w-20 h-1 bg-purple-500 rounded-full"></span>
       </motion.h2>
 
       <motion.div
