@@ -5,8 +5,8 @@ import { useEffect, useRef } from 'react';
 type LinkItem = { id: string; label: string };
 const LINKS: LinkItem[] = [
   { id: 'features', label: 'Features' },
-  { id: 'benefits', label: 'Key Benefits' },
-  { id: 'why',      label: 'Why Choose Us' },
+  { id: 'suite', label: 'Key Benefits' },
+  { id: 'why-choose-us',      label: 'Why Choose Us' },
   { id: 'resources',label: 'Resources' },
   { id: 'contact',  label: 'Contact' },
 ];

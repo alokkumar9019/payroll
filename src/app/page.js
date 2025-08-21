@@ -12,6 +12,7 @@ import FeatureExplorer from "@/components/Features";
 import SuiteCapabilitiesSection from "@/components/Suite";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ProvenResults from "@/components/ProvenResults";
+import PayrollROICalculator from "@/components/Roi";
 export default function Home() {
   return (
    <>
@@ -21,11 +22,11 @@ export default function Home() {
     <HiddenCostSection/>
     <SuiteCapabilitiesSection/>
     <BusinessImpact/>
-    
+    <ComparisonTable/>
     <FeatureExplorer/>
     <ProvenResults/>
     <WhyChooseUs/>
-    <ComparisonTable/>
+    <PayrollROICalculator/>
     <TestimonialsSection/>
     <Resources/>
     <Footer/>

@@ -32,7 +32,7 @@ const itemVariants: Variants = {
 export default function SuiteCapabilitiesWithLottie() {
   const router = useRouter();
   return (
-    <section className="relative py-20 px-6 md:px-12 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl mx-auto shadow-l">
+    <section id="suite" className="relative py-20 px-6 md:px-12 bg-gradient-to-br from-indigo-50 to-purple-50 mx-auto shadow-l">
       <motion.h2
         className="text-4xl font-extrabold text-center text-gray-900 mb-16 tracking-tight"
         initial="hidden"

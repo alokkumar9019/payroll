@@ -41,7 +41,7 @@ const rowVariants: Variants = {
 
 export default function ComparisonTable() {
   return (
-    <section className="mx-auto px-6 py-16 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl shadow-xl ">
+    <section className="mx-auto px-6 py-16 bg-gradient-to-br from-indigo-50 to-purple-50 shadow-xl ">
       <div className="text-center mb-14 relative">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 inline-block relative z-10">
           Why <span className="text-purple-600">We're</span> Different

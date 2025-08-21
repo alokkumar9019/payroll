@@ -26,6 +26,7 @@ export default function WhyChooseUs() {
 
   return (
     <section
+      id="why-choose-us"
       className="relative py-20 px-6 md:px-12 shadow-l mx-auto overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50"
       style={{
         backgroundImage: `url('/payroll-solutions.png')`, // Replace with your background image path

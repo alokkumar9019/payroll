@@ -286,7 +286,7 @@ export default function FeatureExplorer() {
 
   return (
     <section
-      id="feature"
+      id="features"
       className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50"
     >
       <div className="text-center mb-12">
