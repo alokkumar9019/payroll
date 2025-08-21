@@ -6,6 +6,7 @@ import { CheckCircle } from "lucide-react";
 import Lottie from "lottie-react";
 import animationData from "@/lotties/animation2.json";
 import { Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 
 
@@ -29,6 +30,7 @@ const itemVariants: Variants = {
 
 
 export default function SuiteCapabilitiesWithLottie() {
+  const router = useRouter();
   return (
     <section className="relative py-20 px-6 md:px-12 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl mx-auto shadow-l">
       <motion.h2
@@ -84,7 +86,8 @@ export default function SuiteCapabilitiesWithLottie() {
       <div className="mt-16 flex justify-center">
         <motion.button
           type="button"
-          className="inline-flex items-center px-10 py-3 rounded-xl bg-[#E07F5F] text-white font-semibold shadow-lg transition-colors hover:bg-[#d6694d] focus:outline-none focus:ring-4 focus:ring-[#d6694d]"
+          onClick={() => router.push("https://pclnxai.com/retail-payroll-errors-solution-by-pclnxai/#demo")}
+          className="inline-flex items-center px-10 py-3 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer "
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

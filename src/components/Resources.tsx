@@ -17,13 +17,13 @@ const headingVariants: Variants = {
 };
 
 const resources: Resource[] = [
-  { id: "1", title: "Are Payroll Discrepancies Your Weakness?", href: "/resources/payroll-discrepancies", kind: "Blog" },
-  { id: "2", title: "Bridging Payroll & Employee Expectations", href: "/resources/bridging-payroll-expectations", kind: "Article" },
-  { id: "3", title: "DOGES for Payroll Variance", href: "/resources/doges-for-variance", kind: "Video" },
-  { id: "4", title: "Payroll Excellence", href: "/resources/payroll-excellence", kind: "Case Study" },
-  { id: "5", title: "HOOPP $1M Discrepancy Fix", href: "/resources/hoopp-discrepancy-fix", kind: "Case Study" },
-  { id: "6", title: "Pension Automation at Scale", href: "/resources/pension-automation", kind: "Case Study" },
-  { id: "7", title: "Non-Cash Equity Automation", href: "/resources/non-cash-equity", kind: "Case Study" },
+  { id: "1", title: "Are Payroll Discrepancies Your Weakness?", href: "https://www.linkedin.com/posts/pclnxai_weeklynewsletter-payroll-hrtech-activity-7268248039046168576-aN53/", kind: "Blog" },
+  { id: "2", title: "Bridging Payroll & Employee Expectations", href: "https://www.linkedin.com/posts/pclnxai_nxai-globalpayroll-hcm-activity-7296143652152586240-nezJ/", kind: "Article" },
+  { id: "3", title: "DOGES for Payroll Variance", href: "https://www.linkedin.com/posts/pclnxai_doge-video-payrollvarianceanalysis-activity-7300492317495373825-4o9C/", kind: "Video" },
+  { id: "4", title: "Payroll Excellence", href: "https://pclnxai.com/how-a-global-manufacturer-achieved-payroll-excellence-and-compliance/", kind: "Case Study" },
+  { id: "5", title: "HOOPP $1M Discrepancy Fix", href: "https://pclnxai.com/wp-content/uploads/2025/07/Case-Study-Eliminating-dollar1M-HOOPP-Pension-Contribution-Discrepancies-with-PCLnXAI-Payroll-Varian.pdf", kind: "Case Study" },
+  { id: "6", title: "Pension Automation at Scale", href: "https://pclnxai.com/wp-content/uploads/2025/07/Pension-Automation-Case-Study-Final-1.pdf", kind: "Case Study" },
+  { id: "7", title: "Non-Cash Equity Automation", href: "https://pclnxai.com/non-cash-equity-payroll-automation/", kind: "Case Study" },
 ];
 
 function getKindStyles(kind: Resource["kind"]) {

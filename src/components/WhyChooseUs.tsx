@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import {useRouter} from "next/navigation";
 
 const features = [
   "Multi-Country Compliance – Automated checks across global regulations.",
@@ -21,6 +22,8 @@ const itemVariants: Variants = {
 };
 
 export default function WhyChooseUs() {
+    const router = useRouter();
+
   return (
     <section
       className="relative py-20 px-6 md:px-12 shadow-l mx-auto overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50"
@@ -74,13 +77,14 @@ export default function WhyChooseUs() {
         >
           <button
             type="button"
-            className="inline-flex items-center px-12 py-3 rounded-xl bg-[#E07A5F] text-white font-semibold shadow-xl hover:bg-[#d66853] transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#d66853]"
+            className="inline-flex items-center px-12 py-3 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Schedule a Demo
           </button>
           <button
+            onClick={() => router.push("https://pclnxai.com/get-help/")}
             type="button"
-            className="inline-flex items-center px-12 py-3 rounded-xl border-2 border-[#E07A5F] text-[#E07A5F] font-semibold hover:bg-[#E07A5F] hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E07A5F]"
+            className="inline-flex items-center px-12 py-3 rounded-xl border-2 border-[#6749fb] text-white font-semibold hover:bg-gradient-to-r from-blue-600 to-purple-600 hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E07A5F] cursor-pointer"
           >
             Contact Us
           </button>
