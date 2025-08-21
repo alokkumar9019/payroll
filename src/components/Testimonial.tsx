@@ -81,8 +81,6 @@ export default function TestimonialsSection() {
                 className="relative flex h-full flex-col justify-between rounded-2xl bg-white bg-opacity-[0.95] p-8 shadow-md"
                 variants={hoverVariants}
               >
-                {/* Decorative side bar */}
-                <span className="absolute left-0 top-8 bottom-8 w-1.5 rounded-full bg-[#ad46ff]" />
 
                 {/* Faint big quote */}
                 <span className="absolute top-3 right-5 text-[56px] leading-none opacity-10 select-none text-[#333D4B]">

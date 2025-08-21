@@ -16,19 +16,22 @@ const features = [
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export default function SuiteCapabilitiesWithLottie() {
   const router = useRouter();
 
   return (
-    <section className="w-full relative py-12 md:py-20 px-2 md:px-10 bg-gradient-to-br from-indigo-50 to-purple-50">
+    <section
+      id="suite"
+      className="relative py-12 md:py-20 px-2 md:px-10 bg-gradient-to-br from-indigo-50 to-purple-50"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.h2
@@ -41,7 +44,7 @@ export default function SuiteCapabilitiesWithLottie() {
           What You Can Do <span className="text-purple-600">With The Suite</span>
         </motion.h2>
 
-        {/* Main Row */}
+        {/* Main Row with flipped order */}
         <motion.div
           className="flex flex-col md:flex-row items-center md:items-center justify-center md:space-x-10"
           initial="hidden"
@@ -49,22 +52,8 @@ export default function SuiteCapabilitiesWithLottie() {
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
         >
-          {/* Feature Cards */}
-          <div className="w-full md:w-1/2 flex flex-col gap-5">
-            {features.map(({ heading, content }, idx) => (
-              <motion.div
-                key={idx}
-                className="group flex items-center gap-3 rounded-2xl bg-white bg-opacity-90 px-7 py-4 shadow transition-all hover:scale-105 hover:bg-purple-50 cursor-pointer"
-                variants={itemVariants}
-              >
-                <CheckCircle className="w-7 h-7 text-purple-600 flex-shrink-0" />
-                <span className="text-[1rem] sm:text-[1.08rem] font-bold text-gray-900 mr-2 whitespace-nowrap">{heading}</span>
-                <span className="text-gray-700 text-sm font-medium whitespace-nowrap">{content}</span>
-              </motion.div>
-            ))}
-          </div>
-          {/* Lottie/Image */}
-          <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
+          {/* Lottie/Image on the left */}
+          <div className="w-full md:w-1/2 flex justify-center items-center mb-8 md:mb-0">
             <div className="max-w-[420px] w-full flex justify-center items-center">
               <Lottie
                 animationData={animationData}
@@ -80,6 +69,21 @@ export default function SuiteCapabilitiesWithLottie() {
                 aria-label="Payroll Suite Animation"
               />
             </div>
+          </div>
+
+          {/* Feature Cards on the right */}
+          <div className="w-full md:w-1/2 flex flex-col gap-5">
+            {features.map(({ heading, content }, idx) => (
+              <motion.div
+                key={idx}
+                className="group flex items-center gap-3 rounded-2xl bg-white bg-opacity-90 px-7 py-4 shadow transition-all hover:scale-105 hover:bg-purple-50 cursor-pointer"
+                variants={itemVariants}
+              >
+                <CheckCircle className="w-7 h-7 text-purple-600 flex-shrink-0" />
+                <span className="text-[1rem] sm:text-[1.06rem] font-bold text-gray-900 mr-2 whitespace-nowrap">{heading}</span>
+                <span className="text-gray-700 text-sm font-medium whitespace-nowrap">{content}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
