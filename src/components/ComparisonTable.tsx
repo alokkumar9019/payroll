@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion, Variants } from "framer-motion";
 
 const comparisonData = [
   {
@@ -29,44 +30,60 @@ const comparisonData = [
   },
 ];
 
+const rowVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.11, duration: 0.7, ease: "easeOut" },
+  }),
+};
+
 export default function ComparisonTable() {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-12 bg-white rounded-3xl shadow-lg">
-      <h2 className="text-3xl font-extrabold text-center mb-12 text-gray-900">
-        Why We’re Different{" "}
-        <span className="text-lg font-normal text-gray-500">(Comparison Table)</span>
-      </h2>
+    <section className="mx-auto px-6 py-16 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl shadow-xl ">
+      <div className="text-center mb-14 relative">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 inline-block relative z-10">
+          Why <span className="text-purple-600">We're</span> Different
+        </h2>
+        <span className="block mx-auto mt-2 w-20 h-1 bg-purple-500 rounded-full"></span>
+      </div>
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse table-auto min-w-[600px]">
+        <table className="w-full table-auto min-w-[600px]">
           <thead>
             <tr>
-              <th className="border-b-2 border-gray-300 px-6 py-4 bg-gray-50 text-gray-700 font-semibold">
+              <th className="px-6 py-4 bg-gray-100 font-semibold text-gray-700 rounded-tl-2xl text-left">
                 Function
               </th>
-              <th className="border-b-2 border-gray-300 px-6 py-4 bg-gray-50 text-gray-600 font-semibold">
+              <th className="px-6 py-4 bg-gray-100 font-semibold text-gray-600 text-left">
                 Traditional Payroll Review
               </th>
-              <th className="border-b-2 border-gray-300 px-6 py-4 bg-indigo-50 text-indigo-800 font-semibold">
+              <th className="px-6 py-4 bg-indigo-100 font-semibold text-indigo-800 rounded-tr-2xl text-left">
                 PCLnXAI Payroll Suite
               </th>
             </tr>
           </thead>
           <tbody>
             {comparisonData.map((row, idx) => (
-              <tr
+              <motion.tr
                 key={idx}
-                className={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={rowVariants}
+                className={idx % 2 === 0 ? "bg-white" : "bg-purple-50"}
               >
-                <td className="border-b border-gray-200 px-6 py-5 font-semibold text-gray-800 align-top">
+                <td className="px-6 py-6 font-semibold text-gray-800 border-b border-gray-200 align-top whitespace-nowrap rounded-l-2xl">
                   {row.function}
                 </td>
-                <td className="border-b border-gray-200 px-6 py-5 text-gray-600 align-top">
+                <td className="px-6 py-6 text-gray-600 border-b border-gray-200 align-top">
                   {row.traditional}
                 </td>
-                <td className="border-b border-gray-200 px-6 py-5 text-indigo-900 align-top">
+                <td className="px-6 py-6 border-b border-gray-200 align-top rounded-r-2xl bg-indigo-50 text-indigo-900 font-medium shadow-inner">
                   {row.pclnxai}
                 </td>
-              </tr>
+              </motion.tr>
             ))}
           </tbody>
         </table>

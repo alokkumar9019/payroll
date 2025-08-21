@@ -7,6 +7,11 @@ import Footer from "@/components/Footer";
 import Resources from "@/components/Resources";
 import TestimonialsSection from "@/components/Testimonial";
 import ComparisonTable from "@/components/ComparisonTable";
+import BusinessImpact from "@/components/BusinessImpact";
+import FeatureExplorer from "@/components/Features";
+import SuiteCapabilitiesSection from "@/components/Suite";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import ProvenResults from "@/components/ProvenResults";
 export default function Home() {
   return (
    <>
@@ -14,6 +19,12 @@ export default function Home() {
     <Hero/>
     <ProblemWeSolve/>
     <HiddenCostSection/>
+    <SuiteCapabilitiesSection/>
+    <BusinessImpact/>
+    
+    <FeatureExplorer/>
+    <ProvenResults/>
+    <WhyChooseUs/>
     <ComparisonTable/>
     <TestimonialsSection/>
     <Resources/>
