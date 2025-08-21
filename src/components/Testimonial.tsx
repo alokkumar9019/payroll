@@ -58,7 +58,6 @@ export default function TestimonialsSection() {
           variants={itemVariants}
         >
           What Payroll <span className="text-purple-600">Teams</span> Are Saying
-          <span className="absolute left-1/2 -bottom-3 w-20 h-1 bg-purple-500 rounded-full transform -translate-x-1/2" />
         </motion.h2>
 
         {/* Testimonials list */}

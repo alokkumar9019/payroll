@@ -153,7 +153,6 @@ export default function Resources() {
           variants={headingVariants}
         >
           Resources & <span className="text-purple-600">Insight </span>
-          <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-3 h-1 w-20 bg-purple-500 rounded-full"></span>
         </motion.h1>
 
         <motion.p

@@ -57,7 +57,6 @@ export default function BusinessImpact() {
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-10">
           Business <span className="text-purple-600">Impact</span>
-          <span className="block mx-auto mt-2 w-20 h-1 bg-purple-500 rounded-full"></span>
         </h2>
         <motion.p
                   className="text-center text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed"

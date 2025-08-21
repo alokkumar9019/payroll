@@ -22,7 +22,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative inset-0 bg-black z-0"
+      className="relative inset-0 bg-[#3f3f3f] z-0"
       aria-label="Hero"
     >
       <div className="relative container mx-auto px-4 py-10 min-h-[calc(100vh-64px)] grid items-center">
@@ -95,7 +95,7 @@ export default function Hero() {
             <Lottie
         animationData={animationData}
         loop={true}
-        className="w-full max-w-xl rounded-lg shadow-lg"
+        className="w-full max-w-xl rounded-lg shadow-l"
       />
           </motion.div>
         </motion.div>

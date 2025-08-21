@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { motion, Variants } from "framer-motion";
 
@@ -41,14 +42,23 @@ const rowVariants: Variants = {
 
 export default function ComparisonTable() {
   return (
-    <section className="mx-auto px-6 py-16 bg-gradient-to-br from-indigo-50 to-purple-50 shadow-xl ">
+    <section
+      className="mx-auto px-6 py-16 bg-gradient-to-br from-indigo-50 to-purple-50 shadow-xl"
+      style={{ overflowY: "scroll", scrollbarWidth: "none", msOverflowStyle: "none" }} // Hide scrollbar for Firefox and IE/Edge
+    >
+      <style>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        section::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+
       <div className="text-center mb-14 relative">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 inline-block relative z-10">
           Why <span className="text-purple-600">We're</span> Different
         </h2>
-        <span className="block mx-auto mt-2 w-20 h-1 bg-purple-500 rounded-full"></span>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto scrollbar-hide">
         <table className="w-full table-auto min-w-[600px]">
           <thead>
             <tr>

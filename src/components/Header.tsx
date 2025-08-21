@@ -8,7 +8,7 @@ const LINKS: LinkItem[] = [
   { id: 'suite', label: 'Key Benefits' },
   { id: 'why-choose-us',      label: 'Why Choose Us' },
   { id: 'resources',label: 'Resources' },
-  { id: 'contact',  label: 'Contact' },
+  { id: 'roi',  label: 'ROI' },
 ];
 export default function Header() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -43,7 +43,7 @@ export default function Header() {
           className="text-2xl font-extrabold bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 bg-clip-text text-transparent hover:opacity-90 transition"
           aria-label="Go to top"
         >
-          PCLnXAI
+          <img src="/PCLnXAI_logo.png" alt="" className='h-10 w-60' />
         </button>
 
         {/* Nav Links */}

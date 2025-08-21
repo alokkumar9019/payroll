@@ -54,11 +54,10 @@ const itemVariants: Variants = {
 
 export default function ProvenResults() {
   return (
-    <section className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50 px-6 md:px-12">
+    <section className="pb-5 bg-gradient-to-br from-indigo-50 to-purple-50 px-6 md:px-12">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-10">
           Proven <span className="text-purple-600">Results</span>
-          <span className="block mx-auto mt-2 w-20 h-1 bg-purple-500 rounded-full"></span>
         </h2>
         <motion.p
           className="text-center text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed"

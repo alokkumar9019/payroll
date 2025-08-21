@@ -69,7 +69,7 @@ export default function PayrollROICalculator() {
   }
 
   return (
-    <section className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50 flex flex-col items-center min-h-[70vh] px-4">
+    <section id="roi" className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50 flex flex-col items-center min-h-[70vh] px-4">
       <motion.h2
         className="text-center text-3xl md:text-4xl font-extrabold text-gray-800 mb-10 tracking-tight relative "
         initial="hidden"
@@ -78,7 +78,6 @@ export default function PayrollROICalculator() {
         variants={headingVariants}
       >
         Estimate Your <span className="text-purple-600">Retail</span> Payroll ROI
-        <span className="absolute left-1/2 -bottom-4 transform -translate-x-1/2 h-1 w-20 bg-purple-600 rounded-full"></span>
       </motion.h2>
 
       <form

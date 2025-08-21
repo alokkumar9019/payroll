@@ -89,7 +89,6 @@ export default function ProblemWeSolve() {
           variants={headingVariants}
         >
           The <span className="text-purple-600">Problem</span> We Solve
-          <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-3 h-1 w-20 bg-purple-500 rounded-full" />
         </motion.h1>
 
         <motion.p

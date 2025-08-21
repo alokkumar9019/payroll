@@ -238,7 +238,7 @@ const features = [
         { label: "Medium Risk", data: [45], backgroundColor: "#F2C94C" },
         {
           label: "High Risk",
-          data: [10],
+          data:[10] ,
           backgroundColor: chartPalette.accent,
         },
       ],
@@ -280,19 +280,16 @@ const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
+
 export default function FeatureExplorer() {
   const [selected, setSelected] = React.useState("variance");
   const current = features.find((f) => f.key === selected);
 
   return (
-    <section
-      id="features"
-      className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50"
-    >
+    <section id="features" className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50">
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-10">
           Key <span className="text-purple-600">Features</span>
-          <span className="block mx-auto mt-2 w-20 h-1 bg-purple-500 rounded-full"></span>
         </h2>
         <motion.p
           className="text-center text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed"
@@ -301,80 +298,71 @@ export default function FeatureExplorer() {
           viewport={{ once: true, amount: 0.3 }}
           variants={itemVariants}
         >
-          Our suite is a root-cause analytics tool that automatically highlights
-          what's changed, why it changed, and what needs your attention first.
-          Explore the features that deliver the full story behind payroll
-          variance in minutes, not days.
+          Our suite is a root-cause analytics tool that automatically highlights what's changed, why it changed, and what needs your attention first.
+          Explore the features that deliver the full story behind payroll variance in minutes, not days.
         </motion.p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8">
-        <nav aria-label="Feature tabs" className="md:w-1/3">
-          <ul className="space-y-2">
-            {features.map((f) => (
-              <li key={f.key}>
-                <button
-                  className={`block w-full rounded-lg py-3 px-4 font-semibold transition ${
-                    selected === f.key
-                      ? "bg-indigo-900 text-white shadow-lg"
-                      : "bg-white text-gray-600 hover:bg-indigo-50"
-                  }`}
-                  onClick={() => setSelected(f.key)}
-                  aria-selected={selected === f.key}
-                  aria-controls={`feature-panel-${f.key}`}
-                >
-                  {f.tab}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
+<div className="flex flex-col md:flex-row gap-8 items-stretch" style={{ minHeight: '580px', height: '100%' }}>
+   <nav aria-label="Feature tabs" className="md:w-1/3 h-full flex flex-col">
+    <ul className="space-y-6 flex flex-col h-full">
+      {features.map((f) => (
+        <li key={f.key} className="flex-grow">
+          <button
+            className={`block w-full rounded-lg py-3 px-4 font-semibold transition ${
+              selected === f.key
+                ? "bg-indigo-900 text-white shadow-lg"
+                : "bg-white text-gray-600 hover:bg-indigo-50"
+            } h-full flex items-center justify-center`}
+            onClick={() => setSelected(f.key)}
+            aria-selected={selected === f.key}
+            aria-controls={`feature-panel-${f.key}`}
+          >
+            {f.tab}
+          </button>
+        </li>
+      ))}
+    </ul>
+  </nav>
 
-        <main className="md:w-2/3 bg-white rounded-lg p-8 shadow-lg min-h-[400px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current?.key}
-              variants={contentVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              id={`feature-panel-${current?.key}`}
-              role="tabpanel"
-              aria-labelledby={current?.key && `tab-${current.key}`}
-            >
-              <h3 className="mb-6 text-2xl font-bold text-gray-800">
-                {current?.label}
-              </h3>
-              <p className="mb-6 text-gray-700">{current?.description}</p>
-              <div className="max-w-md mx-auto">
-                {current?.isDiagram ? current.diagramHtml : null}
-              </div>
-              {!current?.isDiagram && current?.chartType && (
-                <div className="max-w-md mx-auto" style={{ height: "300px" }}>
-                  {current.chartType === "doughnut" && (
-                    <Doughnut
-                      data={current.chartData}
-                      options={current.chartOptions as any}
-                    />
-                  )}
-                  {current.chartType === "bar" && (
-                    <Bar
-                      data={current.chartData}
-                      options={current.chartOptions as any}
-                    />
-                  )}
-                  {current.chartType === "line" && (
-                    <Line
-                      data={current.chartData}
-                      options={current.chartOptions as any}
-                    />
-                  )}
-                </div>
+  <main className="md:w-2/3 bg-white rounded-lg p-8 shadow-lg h-full flex flex-col">
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={current?.key}
+        variants={contentVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        id={`feature-panel-${current?.key}`}
+        role="tabpanel"
+        aria-labelledby={current?.key && `tab-${current.key}`}
+        className="h-full flex flex-col"
+      >
+        <div className="flex-grow">
+          <h3 className="mb-6 text-2xl font-bold text-gray-800">{current?.label}</h3>
+          <p className="mb-6 text-gray-700">{current?.description}</p>
+          <div className="max-w-md mx-auto">
+            {current?.isDiagram ? current.diagramHtml : null}
+          </div>
+          {!current?.isDiagram && current?.chartType && (
+            <div className="max-w-md mx-auto" style={{ height: "300px" }}>
+              {current.chartType === "doughnut" && (
+                <Doughnut data={current.chartData} options={current.chartOptions as any} />
               )}
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </div>
+              {current.chartType === "bar" && (
+                <Bar data={current.chartData} options={current.chartOptions as any} />
+              )}
+              {current.chartType === "line" && (
+                <Line data={current.chartData} options={current.chartOptions as any} />
+              )}
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  </main>
+</div>
+
     </section>
   );
 }

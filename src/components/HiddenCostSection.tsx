@@ -120,7 +120,6 @@ export default function HiddenCostSection() {
           variants={headingVariants}
         >
           The <span className="text-purple-600">Hidden Cost</span> of Payroll Risk
-          <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-3 h-1 w-20 bg-purple-500 rounded-full"></span>
         </motion.h1>
 
         <motion.div
