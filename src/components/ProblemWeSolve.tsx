@@ -82,7 +82,7 @@ export default function ProblemWeSolve() {
     <section id="problem-we-solve" className="bg-gradient-to-br from-gray-50 to-indigo-50 pt-16">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.h1
-          className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center mb-10 relative"
+          className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center mb-10 relative text-gray-800"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}

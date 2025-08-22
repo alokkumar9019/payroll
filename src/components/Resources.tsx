@@ -15,6 +15,10 @@ const headingVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const resources: Resource[] = [
   { id: "1", title: "Are Payroll Discrepancies Your Weakness?", href: "https://www.linkedin.com/posts/pclnxai_weeklynewsletter-payroll-hrtech-activity-7268248039046168576-aN53/", kind: "Blog" },
@@ -45,8 +49,10 @@ function ArticleCard({ r }: { r: Resource }) {
   return (
     <Link
       href={r.href}
-      className="group relative block w-[86vw] max-w-[420px] min-w-[360px] h-[210px] rounded-2xl border border-gray-200 bg-white p-5 shadow transition hover:shadow-lg dark:border-white/10 dark:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      className="group relative block w-[86vw] max-w-[420px] min-w-[360px] h-[210px] rounded-2xl border border-gray-200 bg-white p-5 shadow transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       tabIndex={0}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${pillBg} ${labelColor}`}>
         {r.kind}
@@ -56,142 +62,74 @@ function ArticleCard({ r }: { r: Resource }) {
         {r.title}
       </h3>
 
-      <span className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition group-hover:bg-blue-50 group-hover:text-blue-700 dark:bg-white/10 dark:text-gray-100">
+      <span className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 transition group-hover:bg-blue-50 group-hover:text-blue-700">
         Read More <ArrowRight className="h-4 w-4 transition group-hover:translate-x-[2px]" />
       </span>
     </Link>
   );
 }
 
-export default function Resources() {
+export default function ResourcesAutoScroll() {
   const railRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(containerRef, { margin: "-100px", once: false });
-  const [isPaused, setIsPaused] = useState(false);
+  const isInView = useInView(containerRef, { margin: "-100px", once: false });
+  const posRef = useRef(0);
+  const animationFrameId = useRef<number | null>(null);
+  const speed = 1; // pixels per frame (~60FPS)
 
   useEffect(() => {
     const el = railRef.current;
     if (!el) return;
 
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const contentWidth = el.scrollWidth / 2;
 
-    let rafId = 0;
-    let last = performance.now();
+    // Start offset at 0 so cards are visible on the left immediately
+    posRef.current = 0;
+    el.style.transform = `translateX(0px)`;
 
-    const pxPerSec = 60; // scroll speed in pixels per second
+    const step = () => {
+      if (isInView) {
+        posRef.current -= speed;
+        if (posRef.current <= -contentWidth) {
+          posRef.current = 0;
+        }
+        el.style.transform = `translateX(${posRef.current}px)`;
+      }
+      animationFrameId.current = requestAnimationFrame(step);
+    };
 
-    // Use let because halfWidth can change on resize
-    let halfWidth = el.scrollWidth / 2;
+    animationFrameId.current = requestAnimationFrame(step);
 
-    function updateHalfWidth() {
-      if (!el) return;
-      halfWidth = el.scrollWidth / 2;
-    }
-
-    function loop(now: number) {
-      const dt = Math.max(0, now - last) / 1000; // elapsed time in seconds
-      last = now;
-
-      const shouldRun =
-        inView &&
-        !isPaused &&
-        !prefersReduced &&
-        document.visibilityState === "visible";
-
-
-      rafId = requestAnimationFrame(loop);
-    }
-
-    rafId = requestAnimationFrame(loop);
-
-    // Update halfWidth on resize
-    const ro = new ResizeObserver(() => {
-      updateHalfWidth();
-    });
-    ro.observe(el);
-
-    // Update halfWidth after fonts and images settle
-    const t = setTimeout(updateHalfWidth, 300);
-
-    // Pause scrolling when user scrolls with wheel or touch
-    let userScrollTimeout: number | null = null;
-    const pauseForUser = () => {
-      if (!isPaused) {
-        setIsPaused(true);
-        if (userScrollTimeout) window.clearTimeout(userScrollTimeout);
-        userScrollTimeout = window.setTimeout(() => setIsPaused(false), 1200);
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
       }
     };
-    el.addEventListener("wheel", pauseForUser, { passive: true });
-    el.addEventListener("touchstart", pauseForUser, { passive: true });
-
-    // Cleanup function
-    return () => {
-      cancelAnimationFrame(rafId);
-      ro.disconnect();
-      clearTimeout(t);
-      el.removeEventListener("wheel", pauseForUser);
-      el.removeEventListener("touchstart", pauseForUser);
-    };
-  }, [inView, isPaused]);
-
-  // Pause when keyboard user focuses card, resume on blur
-  const pause = () => setIsPaused(true);
-  const resume = () => setIsPaused(false);
+  }, [isInView]);
 
   return (
-    <section id="resources" className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50" ref={containerRef}>
-      <div className="container mx-auto px-4">
-        <motion.h1
-          className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center text-gray-800 mb-10 relative"
+    <section ref={containerRef} id="resources" className="bg-gradient-to-br from-indigo-50 to-purple-50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        <motion.h2
+          className="text-center text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-800 mb-10 relative"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={headingVariants}
+          variants={itemVariants}
         >
-          Resources & <span className="text-purple-600">Insight </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
-          className="mt-2 text-center text-gray-600"
-        >
-          Learn from real-world implementations and industry best practices.
-        </motion.p>
+          Resources & <span className="text-purple-600">Insight</span>
+        </motion.h2>
 
         <div
           ref={railRef}
-          onMouseEnter={pause}
-          onMouseLeave={resume}
-          onFocus={pause}
-          onBlur={resume}
-          className="relative mt-8 flex gap-6 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory"
-          style={{
-            maskImage: "linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)",
-            WebkitMaskImage: "linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)",
-            scrollbarWidth: "none",
-          }}
+          className="flex h-[230px] whitespace-nowrap gap-6"
           aria-label="Scrollable resources"
+          style={{ willChange: "transform" }}
         >
           {[...resources, ...resources].map((r, i) => (
-            <motion.div
-              key={`${r.id}-${i}`}
-              data-card
-              initial={{ opacity: 0, y: 20, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ delay: 0.05 * (i % resources.length), duration: 0.45 }}
-              whileHover={{ y: -6 }}
-              className="snap-start"
-            >
+            <div key={`${r.id}-${i}`} className="inline-block" tabIndex={0}>
               <ArticleCard r={r} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

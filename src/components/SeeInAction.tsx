@@ -111,7 +111,7 @@ export default function DemoSection() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">
-            See the &quot; <span className="text-purple-600">Why</span>&quot; in Action
+            See the &quot;<span className="text-purple-600">Why</span>&quot; in Action
           </h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto text-slate-600">
             This is not just another report. It&apos;s an answer engine. Use the buttons below to
@@ -121,7 +121,7 @@ export default function DemoSection() {
         <div className="grid lg:grid-cols-5 gap-8 items-start">
           <div className="lg:col-span-3 bg-white p-6 rounded-lg shadow-lg">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-bold text-lg">Departmental Payroll Costs</h3>
+              <h3 className="font-bold text-lg text-gray-800">Departmental Payroll Costs</h3>
               <div className="flex space-x-2">
                 <button
                   onClick={() => handlePeriodClick("period1")}

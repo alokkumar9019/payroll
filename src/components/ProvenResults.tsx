@@ -88,7 +88,7 @@ export default function ProvenResults() {
               }}
             >
               <div className="mb-4">{result.icon}</div>
-              <div className="text-3xl font-extrabold mb-2">{result.value}</div>
+              <div className="text-3xl font-extrabold mb-2 text-gray-800">{result.value}</div>
               <div className="text-sm sm:text-base text-gray-700">{result.label}</div>
             </motion.div>
           ))}

@@ -87,7 +87,7 @@ export default function BusinessImpact() {
               }}
             >
               <div className="mb-4">{stat.icon}</div>
-              <div className="text-3xl font-extrabold mb-2">{stat.value}</div>
+              <div className="text-3xl font-extrabold mb-2 text-gray-800">{stat.value}</div>
               <div className="text-sm sm:text-base text-gray-700">{stat.label}</div>
             </motion.div>
           ))}
