@@ -62,11 +62,11 @@ export default function TestimonialsSection() {
 
         {/* Testimonials list */}
         <motion.div
-          className="lg:grid lg:grid-cols-3 gap-8 flex overflow-x-auto snap-x snap-mandatory pb-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-4"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={containerVariants}
         >
           {testimonials.map((t, i) => (
             <motion.figure

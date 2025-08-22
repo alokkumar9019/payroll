@@ -60,7 +60,7 @@ export default function Header() {
                 e.preventDefault();
                 goto(id);
               }}
-              className="relative py-1 px-2 text-gray-700 opacity-80 hover:opacity-100 transition-colors duration-300 group flex-shrink-0"
+              className="relative py-1 px-2 opacity-80 hover:opacity-100 transition-colors duration-300 group flex-shrink-0 font-bold"
             >
               {label}
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-500 rounded-full group-hover:w-full transition-all duration-300" />
